@@ -21,20 +21,23 @@ public class MySet<T> {
                     array[i] = temp[i];
                 }
             } array[nextIndex] = element;
-
+        nextIndex++;
     }
 
-    public void remove(T element) {
+    public void remove(int  element) {
         T temp[] = array;
         array = (T[]) new Object[array.length];
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != element) {
+            if (i != element) {
                 array[i] = temp[i];
             }
 
         }
     }
-
+    public T getElement(int element){
+        array = (T[]) new Object[maxSize];
+        return array[element];
+    }
 
     public boolean contains(T element){
         array = (T[]) new Object[maxSize];

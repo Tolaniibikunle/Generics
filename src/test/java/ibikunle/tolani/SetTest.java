@@ -8,44 +8,46 @@ import org.junit.Test;
  * Created by tolaniibikunle on 2/22/17.
  */
 public class SetTest {
-    MySet mySet;
+    MySet<String> mySet;
 
 
     @Before
     public void setUp() {
-        mySet = new MySet();
+        mySet = new MySet<>();
     }
 
     @Test
-    public void addTest() {
-        int expected = 0;
-        int actual = mySet.add();
-        Assert.assertEquals("I am expecting an added element", expected, actual);
-
-
+    public void addTest() throws Exception{
+        mySet.add("Tolani");
+        String expected = "Tolani";
+        String actual = mySet.getElement(0);
+        Assert.assertEquals("I am expecting",expected,actual);
     }
 
     @Test
-    public void removeTest() {
-        int expected = 0;
-        int actual = mySet.remove();
+    public void removeTest() throws Exception{
+        mySet.add("Tolani");
+        mySet.remove(0);
+        String expected = null;
+        String actual = mySet.getElement(0);
         Assert.assertEquals("i am expecting a removed element", expected, actual);
 
     }
-
     @Test
-    public void containsTest() {
-        boolean actual = mySet.contains();
-        Assert.assertTrue(" i am expecting true", actual);
+    public void containsTest() throws Exception{
+        mySet.add("tolani");
+        boolean actual = mySet.contains("tolani");
+        Assert.assertTrue("I am expecting true",actual);
+
 
     }
 
     @Test
-    public void getTest(){
-
-        int expected = 5;
-        int actual = mySet.size();
-        Assert.assertEquals("I am expecting 5",expected,actual);
+    public void getTest()throws Exception{
+        mySet.add("Tolani");
+        String expected = "Tolani";
+        String actual = mySet.getElement(0);
+        Assert.assertEquals("I am expecting",expected,actual);
 
     }
 

@@ -27,19 +27,19 @@ public class MyArrayList<T> {
             array[i] = temp[i];// setting the elements in the temporary array to the indices in the new array;
         }
         array[nextIndex] = element; // setting the item I am passing through to the element at the next index;
-
+            nextIndex++;
     }
 
-    public T getElement(int index) {
+    public T getElement(int element){
         array = (T[]) new Object[maxSize];
-        return array[index];
+        return array[element];
     }
 
 
     public void removeElement(int indexToRemove) {
         T temp[] = array; // storing the array into a temporary array
-        array = (T[]) new Object[array.length]; // initializing array to the length of N
-        for (int i = 0; i < array.length; i++) {  //iterating through the temporary array;
+        array = (T[]) new Object[array.length]; // initializing array to the length of New array
+        for (int i = 0; i < array.length; i++) {  //iterating through the  array;
             if (i != indexToRemove) { // if i is not equal to element you want to remove
                 array[i] = temp[i]; // add that all the other elements to the array except the index to remove
             }
@@ -52,9 +52,9 @@ public class MyArrayList<T> {
         return array.length;
     }
 
-    public void set(T element) {
-        array = (T[]) new Object[maxSize];
-        array[nextIndex] = element;
+    public void set(int index,T element) {
+        array = (T[]) new Object[maxSize];// i don't believe this is necessary
+        array[index] = element;// setting the value at that index;
 
     }
 
@@ -68,8 +68,10 @@ public class MyArrayList<T> {
     }
 
     public boolean isEmpty() {
-        if (array.length != 0) {
-            return false;
+        for (int i = 0; i <array.length ; i++) {
+            if (array[i]!= null) {
+                return false;
+            }
         }
         return true;
     }

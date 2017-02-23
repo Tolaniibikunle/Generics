@@ -6,67 +6,86 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Created by tolaniibikunle on 2/22/17.
  */
-public class MyArrayListTest<T> {
-    MyArrayList myArrayList;
-    T[] arr;
+public class MyArrayListTest {
+    MyArrayList<Integer> numbers;
+    MyArrayList<String> strings;
 
     @Before
     public void setUp() {
-        myArrayList = new MyArrayList();
-        arr = (T[]) new Object[1, 2, 3, 4];
+        numbers = new MyArrayList<>(4);
+        strings = new MyArrayList<>();
     }
 
     @Test
     public void addElementTest() {
-        int expected = 5;
-        int actual = (int) myArrayList.addElement();
-        Assert.assertEquals("", expected, actual);
+        strings.addElement("Tolani");
+        String expected = "Tolani";
+        String actual = strings.getElement(0);
+        Assert.assertEquals(" I am expecting tolani", expected, actual);
     }
 
     @Test
-    public void removeElementTest() {
-        int expected = 4;
-        int actual = myArrayList.removeElement();
-        Assert.assertEquals("", expected, actual);
-
+    public void removeElementTest() throws Exception {
+        strings.addElement("Tolani");
+        strings.removeElement(0);
+        String expected = null;
+        String actual = strings.getElement(0);
+        Assert.assertEquals(" I am expecting null", expected, actual);
 
     }
 
     @Test
-    public void containsElementTest() {
-        Object object = new Object();
-        boolean actual = myArrayList.containsElement(object);
-        Assert.assertTrue("i am expecting true", actual);
+    public void containsElementTest() throws Exception{
+        strings.addElement("African Prince");
+        boolean actual = strings.containsElement(0);
+        Assert.assertTrue(" I am expecting African Prince to print", actual);
+
     }
 
     @Test
     public void sizeTest() {
-        int expected = 8;
-        int actual = myArrayList.size();
-        Assert.assertEquals("I am expecting 8", expected, actual);
+        int expected = 4;
+        int actual = strings.size();
+        Assert.assertEquals("I am expecting 4", expected, actual);
     }
 
     @Test
     public void isEmptyTest() {
-        boolean actual = myArrayList.isEmpty();
-        Assert.assertTrue("I am expecting true", actual);
+        strings.addElement("Tolani");
+        strings.removeElement(0);
+        Assert.assertTrue("i am expecting Tolani to be removed from the array", strings.isEmpty());
 
     }
 
     @Test
     public void isClearTest() {
-        boolean actual = myArrayList.clear();
-        Assert.assertEquals("i am expecting true", actual);
+        strings.addElement("tolani");
+        strings.removeElement(0);
+        boolean actual = strings.clear();
+        Assert.assertTrue("I am expecting a clear array", actual);
+
+    }
+
+    @Test
+    public void setTest() {
+        strings.addElement("Tolani");
+        strings.set(1, "David");
+        String expected = "David";
+        String actual = strings.getElement(1);
+        Assert.assertEquals("I am expecting David", expected, actual);
+
     }
 
     @Test
     public void getTest() {
-        int expected = 5;
-        int actual = (int) myArrayList.getElement(5);
+        strings.addElement("tolani");
+        String expected = "tolani";
+        String actual = strings.getElement(0);
         Assert.assertEquals("i am expecting a five", expected, actual);
     }
 }
