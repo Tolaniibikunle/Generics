@@ -17,38 +17,11 @@ public class SetTest {
     }
 
     @Test
-    public void addTest() throws Exception{
-        mySet.add("Tolani");
+    public void addElementToSetTest() throws Exception {
+        mySet.addElement("Tolani");
         String expected = "Tolani";
-        String actual = mySet.getElement(0);
-        Assert.assertEquals("I am expecting",expected,actual);
-    }
-
-    @Test
-    public void removeTest() throws Exception{
-        mySet.add("Tolani");
-        mySet.remove(0);
-        String expected = null;
-        String actual = mySet.getElement(0);
-        Assert.assertEquals("i am expecting a removed element", expected, actual);
-
-    }
-    @Test
-    public void containsTest() throws Exception{
-        mySet.add("tolani");
-        boolean actual = mySet.contains("tolani");
-        Assert.assertTrue("I am expecting true",actual);
-
-
-    }
-
-    @Test
-    public void getTest()throws Exception{
-        mySet.add("Tolani");
-        String expected = "Tolani";
-        String actual = mySet.getElement(0);
-        Assert.assertEquals("I am expecting",expected,actual);
-
+        String actual = (String) mySet.getElement(0);
+        Assert.assertEquals(" I am expecting tolani", expected, actual);
     }
 
 }

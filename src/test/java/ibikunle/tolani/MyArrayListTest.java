@@ -22,7 +22,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void addElementTest() {
+    public void addElementTest() throws Exception{
         strings.addElement("Tolani");
         String expected = "Tolani";
         String actual = strings.getElement(0);
@@ -30,7 +30,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void removeElementTest() throws Exception {
+    public void removeElementTest() throws IndexOutOfBoundsException  {
         strings.addElement("Tolani");
         strings.removeElement(0);
         String expected = null;
@@ -48,14 +48,14 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void sizeTest() {
+    public void sizeTest() throws Exception{
         int expected = 4;
-        int actual = strings.size();
+        int actual = numbers.size();
         Assert.assertEquals("I am expecting 4", expected, actual);
     }
 
     @Test
-    public void isEmptyTest() {
+    public void isEmptyTest() throws Exception {
         strings.addElement("Tolani");
         strings.removeElement(0);
         Assert.assertTrue("i am expecting Tolani to be removed from the array", strings.isEmpty());
@@ -63,16 +63,15 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void isClearTest() {
+    public void isClearTest() throws Exception {
         strings.addElement("tolani");
         strings.removeElement(0);
-        boolean actual = strings.clear();
-        Assert.assertTrue("I am expecting a clear array", actual);
+        Assert.assertTrue(strings.clear());
 
     }
 
     @Test
-    public void setTest() {
+    public void setTest() throws Exception{
         strings.addElement("Tolani");
         strings.set(1, "David");
         String expected = "David";
@@ -82,7 +81,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void getTest() {
+    public void getTest() throws Exception{
         strings.addElement("tolani");
         String expected = "tolani";
         String actual = strings.getElement(0);

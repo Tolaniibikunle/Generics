@@ -4,7 +4,7 @@ package ibikunle.tolani;
  * Created by tolaniibikunle on 2/22/17.
  */
 public class MyArrayList<T> {
-    int maxSize;
+    int maxSize ;
     int nextIndex;
     T[] array;
 
@@ -22,16 +22,15 @@ public class MyArrayList<T> {
         maxSize *= 2; // this will double the maxSize, essentially resize the array
         T[] newArray = (T[]) new Object[maxSize]; //creating a new array which is equal to the maxSize which is the array size doubled
         T temp[] = array;  // setting the temporary array t
-        array = (T[]) newArray[maxSize]; //setting the new array to the value at array
+        array =  newArray; //setting the new array to the value at array
         for (int i = 0; i < temp.length; i++) { //iterating through the temporary array
             array[i] = temp[i];// setting the elements in the temporary array to the indices in the new array;
         }
         array[nextIndex] = element; // setting the item I am passing through to the element at the next index;
-            nextIndex++;
+        nextIndex++;
     }
 
     public T getElement(int element){
-        array = (T[]) new Object[maxSize];
         return array[element];
     }
 
@@ -44,6 +43,7 @@ public class MyArrayList<T> {
                 array[i] = temp[i]; // add that all the other elements to the array except the index to remove
             }
         }
+
 
 
     }
@@ -59,9 +59,8 @@ public class MyArrayList<T> {
     }
 
     public boolean containsElement(Object element) {
-        array = (T[]) new Object[maxSize];
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == element)
+            if (array[i].equals(element));
                 return true;
         }
         return false;
@@ -78,11 +77,11 @@ public class MyArrayList<T> {
 
 
     public boolean clear() {
-        array = (T[]) new Object[maxSize];
-        if (array.length != 0) {
-            return false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null)
+                return false;
         }
-        return true;
 
+        return true;
     }
 }
